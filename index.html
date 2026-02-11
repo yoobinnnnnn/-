@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고산 - 포트폴리오</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 60px 80px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .deer-character {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .deer-face {
+            width: 80px;
+            height: 100px;
+            background: #d4a574;
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .deer-ear {
+            width: 25px;
+            height: 35px;
+            background: #d4a574;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: -5px;
+        }
+
+        .deer-ear.left {
+            left: 10px;
+            transform: rotate(-15deg);
+        }
+
+        .deer-ear.right {
+            right: 10px;
+            transform: rotate(15deg);
+        }
+
+        .deer-ear-inner {
+            width: 12px;
+            height: 20px;
+            background: #f4d4a8;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            transform: translateX(-50%);
+        }
+
+        .deer-antler {
+            position: absolute;
+            top: -20px;
+            width: 3px;
+            height: 25px;
+            background: #8b6f47;
+        }
+
+        .deer-antler.left {
+            left: 15px;
+            transform: rotate(-20deg);
+        }
+
+        .deer-antler.right {
+            right: 15px;
+            transform: rotate(20deg);
+        }
+
+        .deer-antler::before,
+        .deer-antler::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 12px;
+            background: #8b6f47;
+        }
+
+        .deer-antler::before {
+            top: 8px;
+            left: -5px;
+            transform: rotate(-45deg);
+        }
+
+        .deer-antler::after {
+            top: 8px;
+            right: -5px;
+            transform: rotate(45deg);
+        }
+
+        .deer-eyes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .deer-eye {
+            width: 12px;
+            height: 12px;
+            background: #2c1810;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .deer-eye::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 3px;
+        }
+
+        .deer-nose {
+            width: 15px;
+            height: 12px;
+            background: #2c1810;
+            border-radius: 50% 50% 50% 50%;
+            margin: 8px auto 0;
+        }
+
+        .deer-mouth {
+            width: 20px;
+            height: 10px;
+            border: 2px solid #2c1810;
+            border-top: none;
+            border-radius: 0 0 50% 50%;
+            margin: 2px auto 0;
+        }
+
+        .deer-spots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .spot {
+            width: 8px;
+            height: 8px;
+            background: #c49563;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .spot:nth-child(1) {
+            top: 50px;
+            left: 15px;
+        }
+
+        .spot:nth-child(2) {
+            top: 50px;
+            right: 15px;
+        }
+
+        .spot:nth-child(3) {
+            top: 65px;
+            left: 20px;
+        }
+
+        .spot:nth-child(4) {
+            top: 65px;
+            right: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .sparkle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 40%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(4) {
+            top: 60%;
+            right: 25%;
+            animation-delay: 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+        
+        <div class="deer-character">
+            <div class="deer-antler left"></div>
+            <div class="deer-antler right"></div>
+            <div class="deer-face">
+                <div class="deer-spots">
+                    <div class="spot"></div>
+                    <div class="spot"></div>
+                    <div class="spot"></div>
+                    <div class="spot"></div>
+                </div>
+                <div class="deer-ear left">
+                    <div class="deer-ear-inner"></div>
+                </div>
+                <div class="deer-ear right">
+                    <div class="deer-ear-inner"></div>
+                </div>
+                <div class="deer-eyes">
+                    <div class="deer-eye"></div>
+                    <div class="deer-eye"></div>
+                </div>
+                <div class="deer-nose"></div>
+                <div class="deer-mouth"></div>
+            </div>
+        </div>
+
+        <h1>고산</h1>
+        <p>포트폴리오 웹사이트에 오신 것을 환영합니다</p>
+    </div>
+</body>
+</html>
